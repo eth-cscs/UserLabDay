@@ -17,11 +17,9 @@ stage('Test') {
     node(machineName) {
         checkout scm
         sh("""echo '$sbatch_script' > test_script.sh
-              git --version
-              hostname
               sbatch --wait test_script.sh
               cat test_job.out""")
-        }
+
         deleteDir()
     }
 }
