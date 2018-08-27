@@ -9,6 +9,7 @@ def sbatch_script = '''#!/bin/bash -l
 #SBATCH --constraint=gpu
 #SBATCH --output=test_job.out
 
+date
 module list
 '''
 
