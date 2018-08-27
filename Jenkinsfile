@@ -5,7 +5,7 @@ def sbatch_script = '''#!/bin/bash -l
 #SBATCH --ntasks-per-core=1
 #SBATCH --ntasks-per-node=12
 #SBATCH --cpus-per-task=1
-#SBATCH --partition=normal
+#SBATCH --partition=cscsci
 #SBATCH --constraint=gpu
 #SBATCH --output=test_job.out
 
