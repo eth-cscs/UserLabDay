@@ -1,1 +1,1 @@
-Presentation for the parallel session `Compiling` with instructions on `Building Software on Piz Daint`
+Presentation for the parallel session `Compiling` with instructions about `Building Software on Piz Daint`
