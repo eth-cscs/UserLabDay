@@ -10,4 +10,5 @@
 #SBATCH --output=test_job.out
 
 date
+hostname
 module list
