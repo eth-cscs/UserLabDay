@@ -8,6 +8,7 @@
 #SBATCH --partition=cscsci
 #SBATCH --constraint=gpu
 #SBATCH --output=test_job.out
+#SBATCH --error=test_job.err
 
 date
 module list

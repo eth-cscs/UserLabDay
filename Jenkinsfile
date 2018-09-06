@@ -4,6 +4,8 @@ stage('Test') {
         checkout scm
         sh("""sbatch --wait test_script.sh
               cat test_job.out""")
+
+        archiveArtifacts '*.err,*.out'
         deleteDir()
     }
 }
