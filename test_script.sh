@@ -12,3 +12,4 @@
 
 date
 module list
+module av craype-accel
