@@ -24,7 +24,7 @@ Tuesday, September 11, 2018 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 
 14:30 – 15:30 Parallel sessions:
 1. Continuous Integration and Regression Testing
-1. Interactive Computing (Python-Jupyter)
+1. Interactive Computing with Jupyter Notebooks
 1. Workflows and best practices (Slurm, Data Transfer, Pre- & Post-processing)
 1. CSCS Services to support your scientific work
 
