@@ -1,0 +1,53 @@
+# jg,mkr (CSCS)
+easyblock = 'MakeCp'
+
+name = 'LAMMPS'
+version = '16Jul2018'
+cudaversion =  '9.1'
+versionsuffix = '-cuda-%s-reveal-7.0.2' % cudaversion
+
+homepage = 'http://lammps.sandia.gov/'
+description = """LAMMPS (Large-scale Atomic/Molecular Massively Parallel
+Simulator) is a classical molecular dynamics simulation code designed to run
+efficiently on parallel computers."""
+
+toolchain = {'name': 'CrayCCE', 'version': '18.07'}
+toolchainopts = { 'usempi': True} #, 'openmp': True }
+sources = ['/apps/common/UES/easybuild/sources/l/LAMMPS/%(version)s.tar.gz']
+
+prebuildopts = ' cd ./src && make yes-user-sph && '
+# go to folder ./lib/gpu, create Makefile.gpu and correct file ./lib/gpu/geryon/nvd_device.h
+prebuildopts += 'pushd ../lib/gpu && '
+prebuildopts += 'sed -e "s/-march=bdver1//g" -e "s/sm_[0-9]*/sm_60/g" Makefile.xk7 > Makefile.gpu && '
+prebuildopts += 'sed -i -e "s/-ftree-vectorize//" Makefile.gpu && '
+prebuildopts += 'make -f Makefile.gpu && popd && '
+# create Makefile.omp and correct Makefile.mpi
+prebuildopts += ' sed -i -e "s@mpicxx@CC -hwp -hpl=lammps.pl @" ./MAKE/Makefile.mpi && '
+prebuildopts += ' cat ./MAKE/Makefile.mpi && '
+# openmp support:
+#prebuildopts += 'sed -e "s/mpicxx/CC -homp/" ./MAKE/Makefile.mpi > ./MAKE/Makefile.omp && '
+
+buildopts = [ ' mpi ' ]
+#buildopts = [ ' mpi ', ' omp ' ]   # + sanity !
+
+dependencies = [
+    ('craype-accel-nvidia60', EXTERNAL_MODULE),
+    ('cray-fftw/3.3.6.5', EXTERNAL_MODULE),
+    ('cray-python/3.6.1.1', EXTERNAL_MODULE),
+]
+
+files_to_copy = [
+    (['src/lmp_*'], 'bin'),
+    (['src'], 'reveal'),
+    #(['src/Obj_mpi/lammps.pl'], 'reveal_mpi'),
+]
+
+sanity_check_paths = {
+    'files': ['bin/lmp_mpi'],
+    #'files': ['bin/lmp_mpi','bin/lmp_omp'],
+    'dirs': [],
+}
+
+modextrapaths = {'LAMMPS_REVEALPL': 'reveal/src/Obj_mpi/lammps.pl'}
+
+moduleclass = 'chem'
