@@ -1,0 +1,14 @@
+#!/bin/bash
+
+np=$1
+#np=10000
+
+gfortran data.initial.F90
+./a.out <<< $np
+#     nx=  80
+#     ny= 125
+
+echo './data.initial.sh $nx $ny > data.initial.'$np
+# grep atoms data.initial.$np
+#     16000 atoms
+#      6000 bc particles
