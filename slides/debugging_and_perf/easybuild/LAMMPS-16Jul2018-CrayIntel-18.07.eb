@@ -1,0 +1,37 @@
+# jg,mkr (CSCS)
+easyblock = 'MakeCp'
+
+name = 'LAMMPS'
+version = '16Jul2018'
+cudaversion =  '9.1'
+
+homepage = 'http://lammps.sandia.gov/'
+description = """LAMMPS (Large-scale Atomic/Molecular Massively Parallel
+Simulator) is a classical molecular dynamics simulation code designed to run
+efficiently on parallel computers."""
+
+toolchain = {'name': 'CrayIntel', 'version': '18.07'}
+toolchainopts = {'usempi': True}
+#https://github.com/lammps/lammps/archive/stable_16Mar2018.tar.gz
+#source_urls = ['https://github.com/lammps/lammps/archive']
+sources = ['/apps/common/UES/easybuild/sources/l/LAMMPS/%(version)s.tar.gz']
+
+prebuildopts = ' cd ./src && make yes-user-sph && '
+# create Makefile.omp and correct Makefile.mpi
+prebuildopts += 'sed -i -e "s/mpicxx/CC/" ./MAKE/Makefile.mpi && '
+prebuildopts += 'cat ./MAKE/Makefile.mpi && '
+buildopts = [ ' mpi ' ]
+
+builddependencies = [
+    ('cray-fftw/3.3.6.5', EXTERNAL_MODULE),
+    ('cray-python/3.6.1.1', EXTERNAL_MODULE),
+]
+
+files_to_copy = [(['src/lmp_*'], 'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/lmp_mpi'],
+    'dirs': [],
+}
+
+moduleclass = 'chem'
