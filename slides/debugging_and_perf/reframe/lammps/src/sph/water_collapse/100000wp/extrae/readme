@@ -1,0 +1,23 @@
+for counter in PAPI_TOT_INS PAPI_TOT_CYC PAPI_BR_INS PAPI_BR_MSP PAPI_L1_DCM PAPI_L3_TCM ;do 
+    echo $counter
+    grep $counter papi_avail.daint-gpu
+    echo
+done
+
+# PAPI_TOT_INS
+# PAPI_TOT_INS 0x80000032  Yes   No   Instructions completed
+# 
+# PAPI_TOT_CYC
+# PAPI_TOT_CYC 0x8000003b  Yes   No   Total cycles
+# 
+# PAPI_BR_INS
+# PAPI_BR_INS  0x80000037  Yes   No   Branch instructions
+# 
+# PAPI_BR_MSP
+# PAPI_BR_MSP  0x8000002e  Yes   No   Conditional branch instructions mispredicted
+# 
+# PAPI_L1_DCM
+# PAPI_L1_DCM  0x80000000  Yes   No   Level 1 data cache misses
+# 
+# PAPI_L3_TCM
+# PAPI_L3_TCM  0x80000008  Yes   No   Level 3 cache misses

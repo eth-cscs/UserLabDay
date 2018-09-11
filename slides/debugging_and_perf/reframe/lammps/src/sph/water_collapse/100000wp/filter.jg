@@ -1,0 +1,64 @@
+# #12c:
+# flt     type max_buf[B]     visits time[s] time[%] time/visit[us]  region
+# #12c         USR 102,546,860 12,369,160    6.93     0.8           0.56  _ZN9LAMMPS_NS4NBin9coord2binEPd
+# #12c         USR  60,989,370  6,936,010    3.82     0.4           0.55  _ZN9LAMMPS_NS4Pair8ev_tallyEiiiidddddd
+# #12c         USR   2,756,000  1,272,000    0.71     0.1           0.55  _ZN9LAMMPS_NS6Domain5remapEPdRi
+# #12c         USR   1,126,944    125,307    0.08     0.0           0.64  _ZN9LAMMPS_NS11AtomVecMeso4copyEiii
+# #12c         USR     877,266    106,000    0.09     0.0           0.84  _ZN9LAMMPS_NS11AtomVecMeso9data_atomEPdiPPc
+# #12c         USR     877,266    106,000    0.07     0.0           0.65  _ZN9LAMMPS_NS7AtomVec8data_velEiPPc
+# #12c         USR     877,266    106,000    0.06     0.0           0.55  _ZN9LAMMPS_NS8Variable10set_arraysEi
+# #12c         MPI     285,512     35,501    0.08     0.0           2.37  MPI_Irecv
+# #12c         USR     252,746     19,062    0.01     0.0           0.66  _ZN9LAMMPS_NS11AtomVecMeso13pack_exchangeEiPd
+# #12c         USR     238,524     13,719    0.01     0.0           0.62  _ZN9LAMMPS_NS11AtomVecMeso15unpack_exchangeEPd
+# 
+# #24c:
+# flt     type max_buf[B]     visits time[s] time[%] time/visit[us]  region
+# #24c         USR 61,552,738 14,697,174    8.22     0.9           0.56  _ZN9LAMMPS_NS4NBin9coord2binEPd
+# #24c         USR 30,495,114  6,936,010    3.85     0.4           0.56  _ZN9LAMMPS_NS4Pair8ev_tallyEiiiidddddd
+# #24c         USR  2,756,000  2,544,000    1.41     0.2           0.55  _ZN9LAMMPS_NS6Domain5remapEPdRi
+# #24c         USR    683,878    137,177    0.09     0.0           0.62  _ZN9LAMMPS_NS11AtomVecMeso4copyEiii
+# #24c         USR    438,672    106,000    0.09     0.0           0.85  _ZN9LAMMPS_NS11AtomVecMeso9data_atomEPdiPPc
+# #24c         USR    438,672    106,000    0.07     0.0           0.66  _ZN9LAMMPS_NS7AtomVec8data_velEiPPc
+# #24c         USR    438,672    106,000    0.06     0.0           0.55  _ZN9LAMMPS_NS8Variable10set_arraysEi
+# #24c         MPI    285,512     74,009    0.17     0.0           2.28  MPI_Irecv
+# #24c         USR    245,076     31,954    0.02     0.0           0.64  _ZN9LAMMPS_NS11AtomVecMeso13pack_exchangeEiPd
+# #24c         USR    238,524     26,611    0.02     0.0           0.60  _ZN9LAMMPS_NS11AtomVecMeso15unpack_exchangeEPd
+# 
+# #48c:
+# flt     type max_buf[B]     visits time[s] time[%] time/visit[us]  region
+# #48c         USR 41,202,096 19,384,127   10.79     1.0           0.56  _ZN9LAMMPS_NS4NBin9coord2binEPd
+# #48c         USR 15,247,622  6,936,010    3.85     0.4           0.55  _ZN9LAMMPS_NS4Pair8ev_tallyEiiiidddddd
+# #48c         USR  2,756,000  5,088,000    2.82     0.3           0.55  _ZN9LAMMPS_NS6Domain5remapEPdRi
+# #48c         USR    460,798    168,068    0.10     0.0           0.60  _ZN9LAMMPS_NS11AtomVecMeso4copyEiii
+# #48c         MPI    285,512    151,025    0.33     0.0           2.16  MPI_Irecv
+# #48c         USR    241,384     63,166    0.04     0.0           0.63  _ZN9LAMMPS_NS11AtomVecMeso13pack_exchangeEiPd
+# #48c         USR    238,524     57,823    0.03     0.0           0.59  _ZN9LAMMPS_NS11AtomVecMeso15unpack_exchangeEPd
+# #48c         USR    219,336    106,000    0.09     0.0           0.85  _ZN9LAMMPS_NS11AtomVecMeso9data_atomEPdiPPc
+# #48c         USR    219,336    106,000    0.06     0.0           0.55  _ZN9LAMMPS_NS8Variable10set_arraysEi
+# #48c         USR    219,336    106,000    0.07     0.0           0.66  _ZN9LAMMPS_NS7AtomVec8data_velEiPPc
+# 
+# https://bitbucket.org/jgphpc/pug/issues/49/lammps-scorep
+# 
+# 
+# * For C++ codes, it is mandatory to use scorep-score -m
+# 
+# > scorep-score -h
+#  -m          Prints mangled region names instead of demangled names.
+# 
+# 
+# 
+SCOREP_REGION_NAMES_BEGIN
+ EXCLUDE
+ MANGLED
+_ZN9LAMMPS_NS11AtomVecMeso13pack_exchangeEiPd
+_ZN9LAMMPS_NS11AtomVecMeso15unpack_exchangeEPd
+_ZN9LAMMPS_NS11AtomVecMeso4copyEiii
+_ZN9LAMMPS_NS11AtomVecMeso9data_atomEPdiPPc
+_ZN9LAMMPS_NS4NBin9coord2binEPd
+_ZN9LAMMPS_NS4Pair8ev_tallyEiiiidddddd
+_ZN9LAMMPS_NS6Domain5remapEPdRi
+_ZN9LAMMPS_NS7AtomVec8data_velEiPPc
+_ZN9LAMMPS_NS8Variable10set_arraysEi
+SCOREP_REGION_NAMES_END
+
+
