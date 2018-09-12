@@ -8,7 +8,7 @@ Tuesday, September 11, 2018 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 
 10:00 – 10:30 Registration and Welcome Coffee
 
-10:30 – 10:40 Welcome by Maria Grazia Giuffreda, Head of User Engagement and Support
+10:30 – 10:40 [Welcome](https://github.com/eth-cscs/UserLabDay/raw/master/slides/CSCS_User_Lab_Meeting_SEPT11_2018_Luzern_WELCOME.pdf) by Maria Grazia Giuffreda, Head of User Engagement and Support
 
 10:40 – 11:30 Keynote scientific presentation – Professor Vanessa Wood, Chair in Materials and Device Engineering in Department of Information Technology and Electrical Engineering at the Swiss Federal Institute of Technology (ETH Zürich)
 
@@ -21,7 +21,7 @@ Tuesday, September 11, 2018 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 12:30 – 13:30 Lunch
 
 13:30 – 14:30 CSCS Plenaries: 
-  - Updates from “User Engagement & Support” - Maria Grazia Giuffreda
+  - [Updates from “User Engagement & Support”](https://github.com/eth-cscs/UserLabDay/raw/master/slides/ues_plenary/CSCS_User_Lab_Meeting_SEPT11_2018_Luzern_02.pdf) - Maria Grazia Giuffreda
   - [Overview of User Lab Services](https://github.com/eth-cscs/UserLabDay/raw/master/slides/ues_plenary/GPP-services-overview-userlab-day-2018.pdf) - Guilherme Peretti-Pezzi
   - [Updates from “HPC Operations”](https://github.com/eth-cscs/UserLabDay/raw/master/slides/hpc-ops_plenary/HPCOPSUserDay2018.zip) - Nicholas Cardo
 
