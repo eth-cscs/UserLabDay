@@ -16,7 +16,7 @@ Tuesday, September 11, 2018 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 1. [Containers](https://github.com/eth-cscs/UserLabDay/raw/master/slides/containers/containers_presentation.pdf)
 1. [Debugging & Performance](https://github.com/eth-cscs/UserLabDay/raw/master/slides/debugging_and_perf/Debugging_and_Performance_Tools_2018.pdf)
 1. [Compiling](https://github.com/eth-cscs/UserLabDay/raw/master/slides/compiling/compiling.pptx)
-1. [Scientific Visualization](https://github.com/eth-cscs/UserLabDay/raw/master/slides/vis_and_io/Visualization.pdf) and [I/O libraries](https://github.com/eth-cscs/UserLabDay/blob/master/slides/vis_and_io/io.pdf)
+1. [Scientific Visualization](https://github.com/eth-cscs/UserLabDay/raw/master/slides/vis_and_io/Visualization.pdf) and [I/O libraries](https://github.com/eth-cscs/UserLabDay/raw/master/slides/vis_and_io/io.pdf)
 
 12:30 – 13:30 Lunch
 
