@@ -27,7 +27,7 @@ Tuesday, September 11, 2018 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 
 14:30 – 15:30 Parallel sessions:
 1. [Continuous Integration](https://github.com/eth-cscs/UserLabDay/raw/master/slides/ci_and_regression/ci_presentation.pdf) and [Regression Testing](https://github.com/eth-cscs/UserLabDay/raw/master/slides/ci_and_regression/ReFrame_CI.pdf)
-1. [Interactive Computing with Jupyter Notebooks](https://github.com/eth-cscs/UserLabDay/blob/master/slides/jupyter/CSCS_User_Lab_Day_2018_Interactive_Computing_With_Jupyter_Notebooks.pdf)
+1. [Interactive Computing with Jupyter Notebooks](https://github.com/eth-cscs/UserLabDay/raw/master/slides/jupyter/CSCS_User_Lab_Day_2018_Interactive_Computing_With_Jupyter_Notebooks.pdf)
 1. [Workflows and best practices](https://github.com/eth-cscs/UserLabDay/raw/master/slides/workflows/workflows.pdf) (Slurm, Data Transfer, Pre- & Post-processing)
 1. [CSCS Services to support your scientific work](https://github.com/eth-cscs/UserLabDay/raw/master/slides/cscs_services/CSCS%20services%20-%20User%20Lab%20day%20-%20v04.pdf)
 
