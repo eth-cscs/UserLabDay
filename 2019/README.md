@@ -13,16 +13,16 @@ Tuesday, September 10, 2019 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 10:45 – 11:45 Keynote presentation – To be defined
 
 11:45 – 12:45 Parallel sessions:
-1. [Getting Started](slides?)
-1. [Containers](slides?)
-1. [Visualization](slides?)
+1. [Parallel Session 1](slides?)
+1. [Parallel Session 2](slides?)
+1. [Parallel Session 3](slides?)
 
 12:45 – 13:45 Lunch
 
 13:45 – 14:45 Parallel sessions:
-1. [Continuous Integration](slides?)
-1. [Jupyter Lab](slides?)
-1. [Workflows](slides)
+1. [Parallel Session 4](slides?)
+1. [Parallel Session 5](slides?)
+1. [Parallel Session 6](slides)
 
 14:45 – 15:15 [Updates from CSCS](slides?)
 
