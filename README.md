@@ -1,6 +1,6 @@
 # UserLabDay
 
-[CSCS User Lab Day – Meet the Swiss National Supercomputing Centre](link on the CSCS Event page)
+[CSCS User Lab Day – Meet the Swiss National Supercomputing Centre](https://www.cscs.ch/events/upcoming-events/event-detail/cscs-user-lab-day-meet-the-swiss-national-supercomputing-centre-1/)
 
 Tuesday, September 9, 2019 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 
