@@ -7,7 +7,9 @@ Tuesday, September 9, 2019 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 ## Agenda
 
 10:00 – 10:30 Registration and Welcome Coffee (Foyer)
+
 10:30 – 10:40 Welcome by Maria Grazia Giuffreda, Head of User Engagement and Support (Auditorium)
+
 10:40 – 11:30 Keynote Scientific Presentation – Professor Domenico Giardini, Energy and Science Center (ESC) at the Swiss Federal Institute of Technology (ETH Zürich) (Auditorium)
 
 11:30 – 12:30 Parallel Sessions:
