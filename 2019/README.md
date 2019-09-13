@@ -24,7 +24,7 @@ Tuesday, September 9, 2019 @ Hochschule Luzern, Inseliquai 12B, 6002 Lucerne
 13:30 – 14:30 Parallel Sessions:
 
 1. **A New Era for HPC** – From Batch to Interactive Computing (*Room 02*)
-  * Slides: [Jupyter](https://github.com/eth-cscs/UserLabDay/blob/master/2019/slides/From_Batch_to_Interactive_Computing/CSCS_User_Lab_Day_2019_Jupyter.pdf) | [Julia](https://github.com/eth-cscs/UserLabDay/blob/master/2019/slides/From_Batch_to_Interactive_Computing/CSCS_UserLabDay_2019_JuliaMultiGPU.pdf)
+  * Slides: [Interactive Supercomputing with Jupyter](https://github.com/eth-cscs/UserLabDay/blob/master/2019/slides/From_Batch_to_Interactive_Computing/CSCS_User_Lab_Day_2019_Jupyter.pdf) | [Interactive Multi GPU Supercomputing with Julia](https://github.com/eth-cscs/UserLabDay/blob/master/2019/slides/From_Batch_to_Interactive_Computing/CSCS_UserLabDay_2019_JuliaMultiGPU.pdf)
 2. **Guideline for Advanced Users** - Libraries for Massively Parallel Many-Core and GPU-Accelerated HPC Simulations (*Room 03*)
 3. **Integrating your Infrastructure with CSCS’s**  ([slides](https://github.com/eth-cscs/UserLabDay/blob/master/2019/slides/FirecREST/firecrest_slides.pdf)): Firecrest - a Web API for HPC at CSCS (*Room 10*)
 
