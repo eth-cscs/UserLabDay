@@ -38,7 +38,7 @@ SLURM, depending upon the SLURM version you are using:
 
 ...
 ```
-Fortunately, with deep learning applications like PyTorch and TensorFlow, all the communication is typically done via [NCCL](https://github.com/NVIDIA/nccl). This means that the only thing needed from OpenMPI is the `mpirun` command. We can use the `mpirun` of any host installation of OpenMPI to launch the container. OpenMPI can be installed with EasyBuild using (this recipe)[https://github.com/eth-cscs/production/blob/master/easybuild/easyconfigs/o/OpenMPI/OpenMPI-4.1.2.eb] (more info [here](https://user.cscs.ch/computing/compilation/easybuild/)).
+Fortunately, with deep learning applications like PyTorch and TensorFlow, all the communication is typically done via [NCCL](https://github.com/NVIDIA/nccl). This means that the only thing needed from OpenMPI is the `mpirun` command. We can use the `mpirun` of any host installation of OpenMPI to launch the container. OpenMPI can be installed with EasyBuild using [this recipe](https://github.com/eth-cscs/production/blob/master/easybuild/easyconfigs/o/OpenMPI/OpenMPI-4.1.2.eb) (more info [here](https://user.cscs.ch/computing/compilation/easybuild/)).
 
 We can use this Slurm script to run the example
 ```bash
