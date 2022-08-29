@@ -78,4 +78,19 @@ The output of DeepSpeed is large. When the training start you will some somethin
 [2022-08-29 06:59:41,193] [INFO] [timer.py:198:stop] 0/40, RunningAvgSamplesPerSec=229.93929267351086, CurrSamplesPerSec=227.7217889790298, MemAllocated=0.36GB, MaxMemAllocated=15.06GB
 ```
 
-When the training finishes, it will print examples where the model will highlight the answer 
+When the training finishes, the finetuned model will be saved and examples where the model highlights the answer will be printed.
+
+## Testing the model
+More test samples can be tried with the [`3_squad_bert_deepspeed_test.py`](3_squad_bert_deepspeed_test.py) script with something like this:
+```bash
+
+sarus run --tty --mount=type=bind,source=$SCRATCH,destination=$SCRATCH \
+          nvcr.io/nvidia/pytorch:22.08-py3 \
+          bash -c '
+          cd $SCRATCH/bert-demo;
+          . deepspeed-env/bin/activate;
+          python 3_squad_bert_deepspeed_test.py --model-file cache/model_trained_deepspeed_2022-08-29-101153 \
+                                                --start-sample 24100 \
+                                                --num-test-samples 10'
+```
+Here `cache/model_trained_deepspeed_2022-08-29-101153` is the finetuned model that was saved after the training.
