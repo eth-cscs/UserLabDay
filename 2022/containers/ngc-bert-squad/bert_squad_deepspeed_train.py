@@ -17,23 +17,26 @@ from datasets import disable_caching
 disable_progress_bar()
 disable_caching()
 
-# Benchmark settings
 parser = argparse.ArgumentParser(description='BERT finetuning on SQuAD')
-parser.add_argument('--model', type=str, default='resnet50',
-                    help='model to benchmark')
+parser.add_argument('--hf-model', type=str, default='bert-base-uncased',
+                    help='Name of the HuggingFace model')
+parser.add_argument('--bert-cache-dir', type=str,
+                    default=os.path.join(os.getcwd(), 'cache'),
+                    help='Path to the cache dir of BERT')
+parser.add_argument('--num-epochs', type=int, default=1,
+                    help='number of benchmark iterations')
 parser.add_argument('--download-only', action='store_true',
                     help='Download model, tokenizer, etc and exit')
+parser.add_argument('--test', action='store_true',
+                    help='Test after training')
 parser = deepspeed.add_config_arguments(parser)
 args = parser.parse_args()
 
-hf_model = 'bert-base-uncased'
-bert_cache = os.path.join(os.getcwd(), 'cache')
-
 slow_tokenizer = BertTokenizer.from_pretrained(
-    hf_model,
-    cache_dir=os.path.join(bert_cache, f'_{hf_model}-tokenizer')
+    args.hf_model,
+    cache_dir=os.path.join(args.bert_cache_dir, f'_{args.hf_model}-tokenizer')
 )
-save_path = os.path.join(bert_cache, f'{hf_model}-tokenizer')
+save_path = os.path.join(args.bert_cache_dir, f'{args.hf_model}-tokenizer')
 if not os.path.exists(save_path):
     os.makedirs(save_path)
     slow_tokenizer.save_pretrained(save_path)
@@ -43,16 +46,19 @@ tokenizer = BertWordPieceTokenizer(os.path.join(save_path, 'vocab.txt'),
                                    lowercase=True)
 
 model = BertForQuestionAnswering.from_pretrained(
-    hf_model,
-    cache_dir=os.path.join(bert_cache, f'{hf_model}_qa')
+    args.hf_model,
+    cache_dir=os.path.join(args.bert_cache_dir, f'{args.hf_model}_qa')
+)
+
+hf_dataset = load_dataset(
+    'squad',
+    cache_dir=os.path.join(args.bert_cache_dir, 'datasets')
 )
 
 if args.download_only:
     exit()
 
 model.train()
-
-hf_dataset = load_dataset('squad')
 
 max_len = 384
 
@@ -62,7 +68,7 @@ processed_dataset = hf_dataset.flatten().map(
                                                    tokenizer),
     remove_columns=hf_dataset.flatten()['train'].column_names,
     batched=True,
-    num_proc=12
+    num_proc=1
 )
 
 train_set = processed_dataset["train"]
@@ -77,45 +83,42 @@ model_engine, optimizer, trainloader, __ = deepspeed.initialize(
     training_data=train_set
 )
 
-rank = torch.distributed.get_rank()
-
 # training
-num_epochs = 5
-for epoch in range(num_epochs):  # loop over the dataset multiple times
+for epoch in range(args.num_epochs):  # loop over the dataset multiple times
     for i, batch in enumerate(trainloader, 0):
-        outputs = model(input_ids=batch['input_ids'].to(model_engine.device),
-                        token_type_ids=batch['token_type_ids'].to(model_engine.device),
-                        attention_mask=batch['attention_mask'].to(model_engine.device),
-                        start_positions=batch['start_token_idx'].to(model_engine.device),
-                        end_positions=batch['end_token_idx'].to(model_engine.device))
+        outputs = model(
+            input_ids=batch['input_ids'].to(model_engine.device),
+            token_type_ids=batch['token_type_ids'].to(model_engine.device),
+            attention_mask=batch['attention_mask'].to(model_engine.device),
+            start_positions=batch['start_token_idx'].to(model_engine.device),
+            end_positions=batch['end_token_idx'].to(model_engine.device))
         # forward + backward + optimize
         loss = outputs[0]
         model_engine.backward(loss)
         model_engine.step()
 
+rank = torch.distributed.get_rank()
 if rank == 0:
+    model_filename = f'model_finetuned_deepspeed'
+    # save model's state_dict
+    torch.save(model.state_dict(), model_filename)
     print('Finished Training')
-    if os.environ['SLURM_NODEID'] == '0':
-        model_hash = datetime.now().strftime("%Y-%m-%d-%H%M%S")
-        model_path_name = f'./cache/model_trained_deepspeed_{model_hash}'
 
-        # save model's state_dict
-        torch.save(model.state_dict(), model_path_name)
-
+    if args.test:
         # create the model again since the previous one is on the gpu
         model_cpu = BertForQuestionAnswering.from_pretrained(
             "bert-base-uncased",
-            cache_dir=os.path.join(bert_cache, 'bert-base-uncased_qa')
+            cache_dir=os.path.join(args.bert_cache_dir, 'bert-base-uncased_qa')
         )
 
         # load the model on cpu
         model_cpu.load_state_dict(
-            torch.load(model_path_name,
+            torch.load(model_filename,
                        map_location=torch.device('cpu'))
         )
 
         # load the model on gpu
-        # model.load_state_dict(torch.load(model_path_name))
+        # model.load_state_dict(torch.load(model_filename))
         # model.eval()
 
         eval_set = processed_dataset["validation"]
